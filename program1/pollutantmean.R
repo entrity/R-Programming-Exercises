@@ -23,7 +23,7 @@
 ## Return the mean of the pollutant across all monitors list
 ## in the 'id' vector (ignoring NA values)
 ## NOTE: Do not round the result!
-pollutantmean <- function (directory, pollutant, id) {
+pollutantmean <- function (directory, pollutant, id = 1:332) {
 	sum <- 0
 	count <- 0
 	for (file in list.files(directory)) {
