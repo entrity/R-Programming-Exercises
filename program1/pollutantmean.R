@@ -29,7 +29,7 @@ pollutantmean <- function (directory, pollutant, id) {
 	for (file in list.files(directory)) {
 		fname <- paste(directory, file, sep="/")
 		data <- read.csv(fname, header=TRUE)
-		pollutantlevels <- data[data["ID"] == id & !is.na(data[pollutant]), pollutant]
+		pollutantlevels <- data[any(data["ID"] == id) & !is.na(data[pollutant]), pollutant]
 		sum <- sum + sum(pollutantlevels)
 		count <- count + length(pollutantlevels)
 	}
