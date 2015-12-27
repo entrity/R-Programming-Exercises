@@ -27,11 +27,11 @@ rankhospital <- function(state, outcome, num = "best") {
 	if (nchar(state) != 2)
 		stop("invalid state")
 	if (outcome == "heart attack")
-		colname = "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
+		colname <- "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
 	else if (outcome == "heart failure")
-		colname = "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure"
+		colname <- "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure"
 	else if (outcome == "pneumonia")
-		colname = "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia"
+		colname <- "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia"
 	else
 		stop("invalid outcome")
 	# Read outcome data
