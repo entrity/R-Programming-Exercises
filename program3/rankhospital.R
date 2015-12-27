@@ -40,7 +40,7 @@ rankhospital <- function(state, outcome, num = "best") {
 	colSelect <- c(colname, "Hospital.Name")
 	values <- data[rowSelect, colSelect]
 	# Check that state is valid
-	if (row(data[data$State == state,])
+	if (nrow(data[data$State == state,]) == 0)
 		stop("invalid state")
 	# Return hospital name in that state with the given rank
 	# 30-day death rate
