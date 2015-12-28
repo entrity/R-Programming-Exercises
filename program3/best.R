@@ -39,7 +39,7 @@ best <- function(state, outcome) {
 	values[,colname] <- as.numeric(values[,colname])
 	values <- values[!is.na(values[colname]),]
 	# Return hospital name in that state with lowest 30-day death rate
-	maxval <- max(values[colname])
-	besties <- values[values[colname] == maxval, "Hospital.Name"]
+	minval <- min(values[colname])
+	besties <- values[values[colname] == minval, "Hospital.Name"]
 	sort(besties)[1]
 }
