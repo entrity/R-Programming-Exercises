@@ -18,10 +18,6 @@
 
 rankall <- function(outcome, num = "best") {
 	# Validate args
-	if (class(state) != "character")
-		stop("invalid state")
-	if (nchar(state) != 2)
-		stop("invalid state")
 	if (outcome == "heart attack")
 		colname <- "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"
 	else if (outcome == "heart failure")
@@ -36,7 +32,9 @@ rankall <- function(outcome, num = "best") {
 	# For each state, find the hospital of the given rank
 	output <- data.frame()
 	for (state in names(byState)) {
-		values <- byState[[state]]
+		values <- byState[[state]][,c("Hospital.Name", colname)]
+		values[,colname] <- suppressWarnings(as.numeric(values[,colname]))
+		values <- values[!is.na(values[colname]),]
 		rankings <- order(values[colname], values["Hospital.Name"], decreasing=(num=="worst"))
 		output[state, "hospital"] <-
 			if (num == "best" | num == "worst")
